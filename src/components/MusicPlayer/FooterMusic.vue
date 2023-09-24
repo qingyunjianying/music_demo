@@ -1,6 +1,9 @@
 <template>
   <div class="footer-music">
-    <div class="footerLeft">
+    <div
+      class="footerLeft"
+      @click="updateDetailShow"
+    >
       <van-image
         round
         width="3rem"
@@ -36,40 +39,82 @@
       ref="audio"
       :src=" `https://music.163.com/song/media/outer/url?id=${playList[playListIndex].id}.mp3`"
     ></audio>
+    <van-popup
+      v-model="detailShow"
+      position="right"
+      :style="{ height: '100%',width:'100%' }"
+    >
+      <music-play-detail
+        :musicPlay="playList[playListIndex]"
+        :play="play"
+        :isShown="isShown"
+      ></music-play-detail>
+    </van-popup>
   </div>
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapGetters, mapMutations, mapState } from "vuex";
+import MusicPlayDetail from "./MusicPlayDetail.vue";
 export default {
+  components: { MusicPlayDetail },
   computed: {
-    ...mapState(["playList", "playListIndex", "isShown"]),
+    ...mapState(["playList", "playListIndex", "isShown", "detailShow"]),
   },
   data() {
     return {
       show: true,
     };
   },
+  created() {
+    //获取歌词
+    // this.$http
+    //   .get("/lyric?id=" + this.playList[this.playListIndex].id)
+    //   .then((res) => {
+    //     console.log(res);
+    //   });
+  },
   mounted() {
     console.log(this.$refs);
+
+    // this.$store.dispatch("getLyric", this.playList[this.playListIndex].id);
+  },
+  updated() {
+    this.$store.dispatch("getLyric", this.playList[this.playListIndex].id);
   },
   methods: {
     // const show=true;
-    play: function () {
+    play() {
       if (this.$refs.audio.paused) {
-        // this.show = false;
         this.$refs.audio.play();
         this.updateIsShown(false);
       } else {
-        this.$refs.audio.paused = true;
-
+        console.log(this.$refs);
+        this.$refs.audio.pause();
         this.updateIsShown(true);
       }
-      // if (this.show == false) {
-      // this.show = true;
-      // }
     },
-    ...mapMutations(["updateIsShown"]),
+    ...mapMutations(["updateIsShown", "updateDetailShow"]),
+  },
+  // computed: {
+  //   ...mapGetters(["updateDetailShow"]),
+  // },
+  watch: {
+    playListIndex: function () {
+      //监听如果下标发生了改变，就自动播放音乐
+      this.$refs.audio.autoplay = true;
+      if (this.$refs.audio.paused) {
+        //如果是暂停状态，改变图标
+        this.updateIsShown(false);
+      }
+    },
+    //监听播放列表，实现点击音乐自动播放
+    playList: function () {
+      if (this.isShow) {
+        this.$refs.audio.autoplay = true;
+        this.updateIsShow(false);
+      }
+    },
   },
 };
 </script>
