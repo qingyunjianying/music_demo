@@ -1,5 +1,8 @@
 # demo
+## 项目截图
 
+![](example/index.jpg)
+![](example/play.jpg)
 ## Project setup
 ```
 npm install
