@@ -13,8 +13,9 @@
       />
       <!-- <img :src="playList[playListIndex].al.picUrl" /> -->
       <div class="m-detail">
-        <p>{{ playList[playListIndex].al.name }}</p>
-        <span>说明</span>
+        <p>{{ playList[playListIndex].name }}</p>
+        <!-- <span>{{playList[playListIndex].ar[0].name}}</span> -->
+        <span>滑动切换上下首哦</span>
       </div>
     </div>
     <div class="footerRight">
@@ -48,6 +49,7 @@
         :musicPlay="playList[playListIndex]"
         :play="play"
         :isShown="isShown"
+        :addDuration="addDuration"
       ></music-play-detail>
     </van-popup>
   </div>
@@ -59,11 +61,27 @@ import MusicPlayDetail from "./MusicPlayDetail.vue";
 export default {
   components: { MusicPlayDetail },
   computed: {
-    ...mapState(["playList", "playListIndex", "isShown", "detailShow"]),
+    ...mapState([
+      "playList",
+      "playListIndex",
+      "isShown",
+      "detailShow",
+      "duration",
+    ]),
+    // Vuex中是单项流，v-model是vue中的双向绑定，但是在computed中只通过get获取参数值，没有set无法改变参数值
+    detailShow: {
+      get() {
+        return this.$store.state.detailShow;
+      },
+      set() {
+        this.$store.state.detailShow = this.detailShow;
+      },
+    },
   },
   data() {
     return {
       show: true,
+      interVal: 0, //音乐时间
     };
   },
   created() {
@@ -76,11 +94,12 @@ export default {
   },
   mounted() {
     console.log(this.$refs);
-
-    // this.$store.dispatch("getLyric", this.playList[this.playListIndex].id);
+    this.$store.dispatch("getLyric", this.playList[this.playListIndex].id);
+    // this.updateTime();
   },
   updated() {
     this.$store.dispatch("getLyric", this.playList[this.playListIndex].id);
+    this.addDuration();
   },
   methods: {
     // const show=true;
@@ -88,21 +107,38 @@ export default {
       if (this.$refs.audio.paused) {
         this.$refs.audio.play();
         this.updateIsShown(false);
+        this.updateTime(); //播放就调用音乐更新函数进行传值
       } else {
         console.log(this.$refs);
         this.$refs.audio.pause();
         this.updateIsShown(true);
+        clearInterval(this.interVal);
+        // clearInterval(this.interVal); //暂停清除定时器
       }
     },
-    ...mapMutations(["updateIsShown", "updateDetailShow"]),
+
+    //更新音乐时间
+    updateTime: function () {
+      this.interVal = setInterval(() => {
+        this.updateCurrentTime(this.$refs.audio.currentTime);
+      }, 1000); //每一秒调用一次
+    },
+    //添加总时长
+    addDuration: function () {
+      this.updateDuration(this.$refs.audio.duration);
+    },
+    ...mapMutations([
+      "updateIsShown",
+      "updateDetailShow",
+      "updateCurrentTime",
+      "updateDuration",
+    ]),
   },
-  // computed: {
-  //   ...mapGetters(["updateDetailShow"]),
-  // },
   watch: {
     playListIndex: function () {
       //监听如果下标发生了改变，就自动播放音乐
       this.$refs.audio.autoplay = true;
+
       if (this.$refs.audio.paused) {
         //如果是暂停状态，改变图标
         this.updateIsShown(false);

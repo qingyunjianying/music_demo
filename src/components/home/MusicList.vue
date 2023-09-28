@@ -54,7 +54,7 @@ export default {
   },
   mounted() {
     this.$http.get("/personalized?limit=10").then((res) => {
-      console.log(res);
+      // console.log(res);
       this.musicList = res.data.result;
     });
   },

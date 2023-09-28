@@ -1,31 +1,16 @@
 <template>
   <div id="app">
-    <nav>
-      <van-icon
-        name="apps-o"
-        size="25"
-      />
-      <a href="#">我的</a>
-      <router-link to="/">发现</router-link>
-      <router-link to="/about">云村</router-link>
-      <a href="#">视频</a>
-      <van-icon
-        name="search"
-        size="25"
-      />
-    </nav>
-    <router-view />
-    <footer-music-vue></footer-music-vue>
+    <index-vue></index-vue>
   </div>
 </template>
 
 <script>
-import FooterMusicVue from "./components/MusicPlayer/FooterMusic.vue";
+import IndexVue from "./views/Index.vue";
 
 export default {
   name: "app",
   components: {
-    FooterMusicVue,
+    IndexVue,
   },
 };
 </script>
