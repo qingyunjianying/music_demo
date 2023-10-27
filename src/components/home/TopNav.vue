@@ -4,7 +4,7 @@
       name="apps-o"
       size="25"
     />
-    <a href="#">我的</a>
+    <router-link to="/user">我的</router-link>
     <router-link to="/">发现</router-link>
     <router-link to="#">云村</router-link>
     <a href="#">视频</a>

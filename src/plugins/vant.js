@@ -8,7 +8,13 @@ import { Lazyload } from 'vant';
 import { GoodsAction, GoodsActionIcon, GoodsActionButton } from 'vant';
 import { Image as VanImage } from 'vant';
 import { Popup } from 'vant';
+import { Slider } from 'vant';
+import { Form } from 'vant';
+import { Field } from 'vant';
 
+Vue.use(Form);
+Vue.use(Field);
+Vue.use(Slider);
 Vue.use(Popup);
 Vue.use(VanImage);
 Vue.use(GoodsAction);

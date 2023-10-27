@@ -1,7 +1,7 @@
 <template>
   <div class="IndexVue">
     <router-view></router-view>
-    <footer-music-vue></footer-music-vue>
+    <footer-music-vue v-show="$store.state.isFooter"></footer-music-vue>
   </div>
 </template>
 

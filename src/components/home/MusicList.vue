@@ -27,7 +27,6 @@
           :key="index"
         >
           <router-link
-            tag="div"
             :to="{path:'/itemMusic',query:{id:item.id}}"
             class="route-link"
           ><van-icon

@@ -97,13 +97,20 @@
         />
       </div>
       <div class="bo-main">
-        <input
+        <!-- <input
           type="range"
           class="range"
           min="0"
           :max="duration"
           v-model="currentTime"
-        >
+        > -->
+        <van-slider
+          v-model="currentTime"
+          min="0"
+          button-size="10px"
+          :max="duration"
+          @change="onChangeTime"
+        />
       </div>
       <div class="bo-play">
         <van-icon
@@ -142,6 +149,7 @@
 </template>
 
 <script>
+import { set } from "vue";
 import { mapMutations, mapState } from "vuex";
 export default {
   props: {
@@ -153,6 +161,8 @@ export default {
   data() {
     return {
       isLyricShow: false,
+      // value: "",
+      // onChangeTime: "",
     };
   },
   methods: {
@@ -175,7 +185,19 @@ export default {
       // console.log(index);
       this.updateListIndex(index);
     },
-    ...mapMutations(["updateDetailShow", "updateIsShown", "updateListIndex"]),
+    onChangeTime(value) {
+      // this.$store.("changeCurrentTime", parseFloat(value));
+      // this.onChangeTime = parseFloat(value);
+      console.log(value);
+      // this.updateCurrentTime();
+    },
+    ...mapMutations([
+      "updateDetailShow",
+      "updateIsShown",
+      "updateListIndex",
+      "updateCurrentTime",
+      "changeCurrentTime",
+    ]),
   },
   computed: {
     ...mapState([
@@ -222,7 +244,7 @@ export default {
           }
         });
       }
-      // console.log(arr);
+      console.log(arr);
       return arr;
     },
     currentTime: {

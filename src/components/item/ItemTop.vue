@@ -41,7 +41,7 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.playList);
+    console.log(this.playList);
   },
 };
 </script>

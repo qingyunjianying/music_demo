@@ -27,6 +27,9 @@ export default new Vuex.Store({
     lyricList: {},//歌词
     currentTime: 0,//当前时间，用于获取音乐相匹配歌词歌词
     duration: 0,//歌曲总时长
+    isLogin: false,//判断是否登录
+    isFooter: true,//底部组件是否显示
+    unikey: '',
   },
   getters: {
   },
@@ -39,6 +42,10 @@ export default new Vuex.Store({
     updatePlayList: function (state, val) {
       state.playList = val;
       console.log(state.playList);
+    },
+    //搜索列表播放列表
+    pushPlayList: function (state, val) {
+      state.playList.push(val);
     },
     //根据playListIndex切换歌曲
     updateListIndex: function (state, val) {
@@ -62,9 +69,19 @@ export default new Vuex.Store({
     //更新总时长
     updateDuration: function (state, val) {
       state.duration = val;
-    }
+    },
+    //更改当前歌曲时间
+    // changeCurrentTime: function (state, val) {
+    //   // console.log(state.currentTime);
+    //   state.currentTime = val;
+    // },
+    //更新key
+    updateKey: function (state, val) {
+      state.unikey = val;
+    },
   },
   actions: {
+    //获取歌词
     getLyric: async function (context, value) {
       axios.get("http://localhost:3000/lyric?id=" + value).then(res => {
         // console.log(res);
@@ -75,6 +92,25 @@ export default new Vuex.Store({
       // console.log(res);
 
     },
+    // //获取登录信息
+    // getLogin: async function (context, email, password, value) {
+
+    //   axios.post(`http://localhost:3000/login?email=${email}&password=${password}`).then(res => {
+    //     // console.log(res);
+
+    //     console.log(res);
+    //   })
+    // },
+    //获取登录信息qr
+    // getLoginKey: async function (context, unikey) {
+    //   axios.get(`http://localhost:3000/login/qr/key?timestamp=${Date.now()}`).then((res) => {
+    //     // state.unikey = res.data.data.unikey;
+    //     console.log(res.data.data.unikey);
+    //     context.commit("updateKey", res.data.data.unikey)
+    //   });
+
+    // },
+
   },
   modules: {
   }
