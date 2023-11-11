@@ -1,10 +1,13 @@
 # demo
 ## 项目截图
-
+<div align="center">
+  
 ![](example/index.jpg)
 ![](example/play1.jpg)
 ![](example/play2.jpg)
 ![](example/list.jpg)
+
+</div>
 ## Project setup
 ```
 npm install
