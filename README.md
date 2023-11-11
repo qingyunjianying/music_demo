@@ -8,6 +8,7 @@
 ![](example/list2.jpg)
 
 </div>
+
 ## Project setup
 ```
 npm install
