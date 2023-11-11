@@ -97,20 +97,20 @@
         />
       </div>
       <div class="bo-main">
-        <!-- <input
+        <input
           type="range"
           class="range"
           min="0"
           :max="duration"
           v-model="currentTime"
-        > -->
-        <van-slider
+        >
+        <!-- <van-slider
           v-model="currentTime"
           min="0"
           button-size="10px"
           :max="duration"
           @change="onChangeTime"
-        />
+        /> -->
       </div>
       <div class="bo-play">
         <van-icon

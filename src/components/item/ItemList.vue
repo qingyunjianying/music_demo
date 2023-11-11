@@ -17,7 +17,7 @@
               <span
                 v-for="(item1,index) in item.ar"
                 :key="index"
-                style="font-size:0.1rem ;color: gray;"
+                style="font-size:0.7rem ;color: gray;"
               >
                 {{ item1.name }}
               </span>

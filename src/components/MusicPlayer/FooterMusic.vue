@@ -182,7 +182,7 @@ export default {
 }
 .m-detail > span {
   position: relative;
-  font-size: 2px;
+  font-size: 0.5rem;
   color: gray;
   /* margin: 0 auto; */
 }
