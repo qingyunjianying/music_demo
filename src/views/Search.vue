@@ -49,7 +49,7 @@
               <span
                 v-for="(item1,index) in item.artists"
                 :key="index"
-                style="font-size:0.1rem ;color: gray;"
+                class="span"
               >
                 {{ item1.name }}
               </span>
@@ -214,5 +214,9 @@ export default {
 }
 .author {
   padding-left: 1rem;
+}
+.list-left > .author > .span {
+  color: gray;
+  font-size: 0.7rem;
 }
 </style>
