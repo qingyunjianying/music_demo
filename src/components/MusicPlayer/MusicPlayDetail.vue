@@ -19,10 +19,9 @@
             mode="horizontal"
           >
             <div style="width: 10rem; white-space:nowrap;">
-              {{musicPlay.al.name}}
+              {{musicPlay.name}}
             </div>
           </v2-marquee>
-          <!-- <p>{{ musicPlay.al.name }}</p> -->
           <span
             v-for="item in musicPlay.ar"
             :key="item.id"

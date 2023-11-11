@@ -1,7 +1,10 @@
  <template>
   <div id="itemMusic">
     <item-top :playList="playList"></item-top>
-    <item-list :itemList="itemList"></item-list>
+    <item-list
+      :itemList="itemList"
+      :subscribedCount="playList.subscribedCount"
+    ></item-list>
   </div>
 
 </template>

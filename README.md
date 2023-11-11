@@ -5,7 +5,7 @@
 ![](example/index.jpg)
 ![](example/play1.jpg)
 ![](example/play2.jpg)
-![](example/list.jpg)
+![](example/list2.jpg)
 
 </div>
 ## Project setup

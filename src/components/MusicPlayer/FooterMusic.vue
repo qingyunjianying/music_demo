@@ -174,11 +174,14 @@ export default {
 }
 .m-detail {
   margin-left: 1.5rem;
-  /* box-sizing: border-box; */
 }
 .m-detail > p {
   font-size: 1rem;
   margin: 0 0;
+  white-space: nowrap;
+  max-width: 10rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .m-detail > span {
   position: relative;

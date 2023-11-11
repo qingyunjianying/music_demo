@@ -29,10 +29,12 @@
           <router-link
             :to="{path:'/itemMusic',query:{id:item.id}}"
             class="route-link"
-          ><van-icon
-              name="play-circle-o"
-              class="playerIcon"
-            />
+          >
+            <div class="playerIcon">
+              <van-icon name="play-circle-o" />
+              <span>{{ changeCount(item.playCount) }}</span>
+            </div>
+
             <img v-lazy="item.picUrl" />
           </router-link>
           <span class="name">{{ item.name }}</span>
@@ -57,6 +59,16 @@ export default {
       this.musicList = res.data.result;
     });
   },
+  methods: {
+    changeCount: function (num) {
+      if (num >= 100000000) {
+        num = (num / 100000000).toFixed(1) + "亿";
+      } else if (num >= 10000) {
+        num = (num / 10000).toFixed(1) + "万";
+      }
+      return num;
+    },
+  },
 };
 </script>
 
@@ -64,7 +76,7 @@ export default {
 .music-ban {
   height: 3rem;
   line-height: 3rem;
-  font-family: "楷体";
+  font-family: "fangsong";
   font-size: 1rem;
   font-weight: 600;
 }
@@ -82,7 +94,9 @@ export default {
 .playerIcon {
   position: absolute;
   z-index: 20;
-  right: 1rem;
+  right: 0.3rem;
+  font-size: xx-small;
+  color: lightcyan;
 }
 .van-swipe-item > .route-link > img {
   width: 100%;
@@ -94,8 +108,10 @@ export default {
   position: sticky;
   font-family: cursive;
   font-weight: 500;
-  display: inline-block;
-  height: 2.2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /* height: 2.2rem; */
   overflow: hidden;
 }
 </style>

@@ -139,11 +139,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .search_wrap {
   width: 100%;
   /* height: 100%; */
-  position: absolute;
+  position: fixed;
 }
 .searchTop {
   /* margin: 0.5rem; */
@@ -191,17 +191,13 @@ export default {
   /* background: linear-gradient(to right, #d3d0d0, gray); */
 }
 .music-ul {
-  height: 3rem;
   width: 100%;
   overflow: hidden;
 }
 .music-ul > .music-li {
-  background-color: hsl(180, 30%, 95%, 0.8);
-  opacity: 0.7;
-  border: 1px solid gray;
-  /* height: 2rem; */
+  /* background-color: hsl(180, 30%, 95%, 0.8); */
+  border-bottom: 1px dashed gray;
   font-size: 1rem;
-  /* font-family: "隶书"; */
   line-height: 2rem;
   padding: 0.5rem 0.5rem;
   display: flex;

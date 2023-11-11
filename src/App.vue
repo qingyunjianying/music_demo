@@ -24,7 +24,7 @@ export default {
   color: #2c3e50;
 }
 body {
-  background: linear-gradient(45deg, #f69d3c, #ebf8e1, #3f87a6);
+  background: linear-gradient(75deg, #7a6abd, #5b8baa, #36b696);
 }
 nav {
   padding: 1.5rem 0;
@@ -35,7 +35,7 @@ nav {
 nav a {
   padding: 0 1rem;
   font-weight: bold;
-  color: hsl(210, 3%, 52%);
+  color: hsl(210, 10%, 72%);
 }
 
 nav a.router-link-exact-active {
