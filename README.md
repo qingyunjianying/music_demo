@@ -1,12 +1,9 @@
-# demo
+# music_demo
 ## 项目截图
 <div align="center">
-  
-![](example/index.jpg)
-![](example/play1.jpg)
-![](example/play2.jpg)
-![](example/list2.jpg)
-
+<img src="https://raw.githubusercontent.com/qingyunjianying/music_demo/main/example/index.jpg" width="30%">
+<img src="https://raw.githubusercontent.com/qingyunjianying/music_demo/main/example/playList.jpg" width="30%">
+<img src="https://raw.githubusercontent.com/qingyunjianying/music_demo/main/example/play1.jpg" width="30%">
 </div>
 
 ## Project setup
