@@ -2,7 +2,9 @@
 ## 项目截图
 
 ![](example/index.jpg)
-![](example/play.jpg)
+![](example/play1.jpg)
+![](example/play2.jpg)
+![](example/list.jpg)
 ## Project setup
 ```
 npm install
